@@ -1,0 +1,63 @@
+<div class="card-info">
+  <div class="card-info__btn-wrapper">
+    <a [routerLink]="['/cards']" class="card-info__btn card-info__btn--back"
+      >Назад</a
+    >
+  </div>
+  <!-- /.card-info__btn-wrapper -->
+  <h2 *ngIf="!card" class="card-info__error">Ошибка! Записи не существует!</h2>
+  <div *ngIf="card" class="card-info__content">
+    <div class="card-info__input-wrapper">
+      <strong class="card-info__input-name">Запись "{{ card.title }}"</strong>
+      <input
+        [(ngModel)]="card.title"
+        [value]="card.title"
+        id="title"
+        type="text"
+        class="card-info__input"
+      />
+    </div>
+    <!-- /.card-info__input-wrapper -->
+    <div class="card-info__input-wrapper">
+      <strong class="card-info__input-name">Контент</strong>
+      <textarea
+        id="content"
+        [value]="card.content"
+        [(ngModel)]="card.content"
+        cols="30"
+        class="card-info__input"
+        rows="10"
+      ></textarea>
+    </div>
+    <!-- /.card-info__input-wrapper -->
+    <div class="card-info__button-wrapper">
+      <button
+        (click)="toggleModal()"
+        class="card-info__btn card-info__btn--red"
+      >
+        Удалить
+      </button>
+      <button (click)="editCard()" class="card-info__btn">Сохранить</button>
+    </div>
+    <div id="delete-modal" class="delete-modal card-info__delete-modal">
+      <h3 class="delete-modal__title">
+        Вы уверены, что хотите удалить запись "{{ card.title }}" ?
+      </h3>
+      <div class="delete-modal__btns-wrapper">
+        <a
+          (click)="deleteCard()"
+          [routerLink]="['/cards']"
+          class="card-info__btn card-info__btn--red"
+          >Удалить</a
+        >
+        <button (click)="toggleModal()" class="card-info__btn">Отмена</button>
+      </div>
+      <!-- /.delete-modal__btns-wrappe -->
+    </div>
+    <!-- /.delete-modal card-info__delete-modal -->
+    <div (click)="toggleModal()" id="overlay" class="overlay"></div>
+    <!-- /.overlay -->
+  </div>
+  <!-- /.card-info__content -->
+</div>
+<!-- /.card-info -->

@@ -1,0 +1,68 @@
+.add-product-btn
+    cursor: pointer
+.cards
+    &__title
+        text-align: center
+    &-wrapper
+        display: grid
+        grid-template-columns: repeat(3, 30%)
+        justify-content: space-between
+        grid-row-gap: 10px
+        &__status-msg
+            text-align: center
+    &__wrapper
+        margin-top: 50px
+    &__create-modal
+        position: fixed
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+.card
+    display: flex
+    flex-direction: column
+    align-items: center
+    text-align: center
+    border: 1px dashed black
+    padding: 10px
+    box-sizing: border-box
+.overlay
+    position: fixed
+    width: 100%
+    display: none
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.3)
+    left: 0
+    right: 0
+    cursor: pointer
+    bottom: 0
+    top: 0
+    z-index: 2
+.create-modal
+    box-sizing: border-box
+    padding: 10px
+    width: 800px
+    display: none
+    min-width: 0px
+    background-color: #e0e0e0
+    overflow: visible
+    flex-direction: column
+    align-items: center
+    z-index: 3
+    &__input-wrapper
+        display: flex
+        flex-direction: column
+        width: 100%
+        &:not(:last-child)
+            margin-bottom: 20px
+    &__content
+        resize: none
+    &__input-name
+        padding-bottom: 10px
+    &__button
+        padding: 10px
+        margin-right: 20px
+        cursor: pointer
+    &__input
+        padding: 10px
+    &--active
+        display: block

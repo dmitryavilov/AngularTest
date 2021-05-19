@@ -1,0 +1,50 @@
+<div class="cards cards--pos">
+  <h2 class="cards__title">Блог</h2>
+  <button
+    title="Добавить карточку"
+    (click)="toggleModal()"
+    class="add-product-btn"
+  >
+    +
+  </button>
+  <h2 *ngIf="!cards.length" class="cards-wrapper__status-msg">
+    Пока что новостей нет!
+  </h2>
+  <div class="cards-wrapper cards__wrapper">
+    <ng-container>
+      <article *ngFor="let card of cards" class="card">
+        <h3 class="card__title">{{ card.title }}</h3>
+        <p class="card__description">
+          {{ card.content }}
+        </p>
+        <a [routerLink]="['/cards', card.id]" class="card__btn-link">Перейти</a>
+      </article>
+      <!-- /.card -->
+    </ng-container>
+  </div>
+  <!-- /.cards-wrapper cards__wrapper -->
+
+  <form id="create-modal" class="create-modal cards__create-modal">
+    <div class="create-modal__input-wrapper">
+      <strong class="create-modal__input-name">Title</strong>
+      <input id="title" type="text" class="create-modal__input" />
+    </div>
+    <!-- /.create-modal__input-wrapper -->
+    <div class="create-modal__input-wrapper">
+      <strong class="create-modal__input-name">Content</strong>
+      <textarea
+        id="content"
+        class="create-modal__content"
+        cols="30"
+        rows="10"
+      ></textarea>
+    </div>
+    <!-- /.create-modal__input-wrapper -->
+    <button (click)="addProduct()" class="create-modal__button">Создать</button>
+    <button (click)="toggleModal()" class="create-modal__button">Отмена</button>
+  </form>
+  <!-- /.create-modal cards__create-modal -->
+
+  <div (click)="toggleModal()" class="overlay" id="overlay"></div>
+</div>
+<!-- /.cards -->

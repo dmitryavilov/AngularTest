@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-test';
+
+  toggleModal() {
+    const modal : any = document.querySelector('.modal');
+
+    modal.classList.toggle('modal--active');
+  };
 }
